@@ -1,4 +1,4 @@
-function getComputerChoice(){
+function getComputerChoice() {
     let num = getRandomArbitrary(1, 4);
     if (num === 1){
         return "Rock";
@@ -15,5 +15,17 @@ function getRandomArbitrary(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
 
-let computerChoice = getComputerChoice();
+function getHumanChoice() {
+    let userChoice = prompt("Select rock, paper, or scissors for your turn");
+
+    if (userChoice.toLowerCase() === "rock") {
+        return "Rock";
+    }else if (userChoice.toLowerCase() === "paper") {
+        return "Paper";
+    }else {
+        return "Scissors";
+    }
+}
+
+let computerChoice = getHumanChoice();
 console.log(computerChoice);
