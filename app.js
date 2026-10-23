@@ -1,6 +1,6 @@
 function getComputerChoice() {
     let num = getRandomArbitrary(1, 4);
-    
+
     if (num === 1){
         return "Rock";
     }else if (num === 2){
@@ -35,16 +35,16 @@ function playRound(humanChoice, computerChoice) {
         computerScore = computerScore + 1;
     }else if (humanChoice === "Scissors" && computerChoice === "Paper") {
         console.log("You win! " + humanChoice + " beats " + computerChoice);
-        humanChoice = humanChoice + 1;
+        humanScore = humanScore + 1;
     }else if (humanChoice === "Paper" && computerChoice === "Rock") {
         console.log("You win! " + humanChoice + " beats " + computerChoice);
-        humanChoice = humanChoice + 1;
+        humanScore = humanScore + 1;
     }else if (humanChoice === "Scissors" && computerChoice === "Rock") {
         console.log("You lose! " + computerChoice + " beats " + humanChoice);
         computerScore = computerScore + 1;
     }else if (humanChoice === "Rock" && computerChoice === "Scissors") {
         console.log("You win! " + humanChoice + " beats " + computerChoice);
-        humanChoice = humanChoice + 1;
+        humanScore = humanScore + 1;
     }else if (humanChoice === "Paper" && computerChoice === "Scissors") {
         console.log("You lose! " + computerChoice + " beats " + humanChoice);
         computerScore = computerScore + 1;
@@ -57,10 +57,37 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
+function playGame() {
+    let humanChoice = getHumanChoice();
+    let computerChoice = getComputerChoice();
+    playRound(humanChoice, computerChoice);
+
+    humanChoice = getHumanChoice();
+    computerChoice = getComputerChoice();
+    playRound(humanChoice, computerChoice);
+
+    humanChoice = getHumanChoice();
+    computerChoice = getComputerChoice();
+    playRound(humanChoice, computerChoice);
+
+    humanChoice = getHumanChoice();
+    computerChoice = getComputerChoice();
+    playRound(humanChoice, computerChoice);
+
+    humanChoice = getHumanChoice();
+    computerChoice = getComputerChoice();
+    playRound(humanChoice, computerChoice);
+}
+
 let humanScore = 0;
 let computerScore = 0;
 
-let humanChoice = getHumanChoice();
-let computerChoice = getComputerChoice();
+playGame();
 
-playRound(humanChoice, computerChoice);
+if (humanScore > computerScore) {
+    console.log("You win the game! You won " + humanScore + " out of 5 rounds!");
+}else if (computerScore > humanScore) {
+    console.log("You lost the game! You lost " + computerScore + " out of 5 rounds!");
+}else {
+    console.log("Tie game!");
+}
