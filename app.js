@@ -1,5 +1,6 @@
 function getComputerChoice() {
     let num = getRandomArbitrary(1, 4);
+    
     if (num === 1){
         return "Rock";
     }else if (num === 2){
@@ -27,5 +28,39 @@ function getHumanChoice() {
     }
 }
 
-let computerChoice = getHumanChoice();
-console.log(computerChoice);
+function playRound(humanChoice, computerChoice) {
+
+    if (humanChoice === "Rock" && computerChoice === "Paper") {
+        console.log("You lose! " + computerChoice + " beats " + humanChoice);
+        computerScore = computerScore + 1;
+    }else if (humanChoice === "Scissors" && computerChoice === "Paper") {
+        console.log("You win! " + humanChoice + " beats " + computerChoice);
+        humanChoice = humanChoice + 1;
+    }else if (humanChoice === "Paper" && computerChoice === "Rock") {
+        console.log("You win! " + humanChoice + " beats " + computerChoice);
+        humanChoice = humanChoice + 1;
+    }else if (humanChoice === "Scissors" && computerChoice === "Rock") {
+        console.log("You lose! " + computerChoice + " beats " + humanChoice);
+        computerScore = computerScore + 1;
+    }else if (humanChoice === "Rock" && computerChoice === "Scissors") {
+        console.log("You win! " + humanChoice + " beats " + computerChoice);
+        humanChoice = humanChoice + 1;
+    }else if (humanChoice === "Paper" && computerChoice === "Scissors") {
+        console.log("You lose! " + computerChoice + " beats " + humanChoice);
+        computerScore = computerScore + 1;
+    }else if (humanChoice === computerChoice) {
+        console.log("Tie! Both players played " + humanChoice);
+    }else {
+        console.log("Game error");
+        console.log(humanChoice);
+        console.log(computerChoice);
+    }
+}
+
+let humanScore = 0;
+let computerScore = 0;
+
+let humanChoice = getHumanChoice();
+let computerChoice = getComputerChoice();
+
+playRound(humanChoice, computerChoice);
